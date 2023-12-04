@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import {user} from '../User';
 import { usersArr } from '../User';
 
-export const LoginSignup = () => {
+export const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [loggedInUser, setLoggedInUser] = useState(null);
+ // const [loggedInUser, setLoggedInUser] = useState(null);
 
   // Function to handle login
   const handleLogin = () => {
@@ -18,26 +18,18 @@ export const LoginSignup = () => {
     }
   };
 
-  // Function to handle signup
-  const handleSignup = () => {
-    const newUser = { username, password };
-    localStorage.setItem('user', JSON.stringify(newUser));
-    setLoggedInUser(newUser);
-    alert('Signup successful!');
-  };
-
-  // Function to handle logout
-  const handleLogout = () => {
-    setLoggedInUser(null);
-    alert('Logged out successfully!');
-  };
+  // // Function to handle logout
+  // const handleLogout = () => {
+  //   setLoggedInUser(null);
+  //   alert('Logged out successfully!');
+  // };
 
   return (
     <div>
       {loggedInUser ? (
         <div>
           <p>Welcome, {loggedInUser.username}!</p>
-          <button onClick={handleLogout}>Logout</button>
+          {/* <button onClick={handleLogout}>Logout</button> */}
         </div>
       ) : (
         <div>
@@ -55,9 +47,6 @@ export const LoginSignup = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
           <button onClick={handleLogin}>Login</button>
-
-          <h2>Signup</h2>
-          <button onClick={handleSignup}>Signup</button>
         </div>
       )}
     </div>
