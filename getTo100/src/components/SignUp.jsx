@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import {user} from '../User';
-import { usersArr } from '../User';
+import {User} from '../User';
+import { usersArr as usersArr1 } from '../User';
 
 export const SignUp = () => {
     const [username, setUsername] = useState('');
@@ -11,8 +11,8 @@ export const SignUp = () => {
   
     // Function to handle signup
     const handleSignup = () => {
-      const users =  JSON.stringify(usersArr);
-      if(!usersArr){
+      const users =  JSON.stringify(usersArr1);
+      if(!usersArr1){
         const usersArr=[];
       }
       const newUser = { username, password };
@@ -26,7 +26,7 @@ export const SignUp = () => {
         {loggedInUser ? (
           <div>
             <p>Welcome, {loggedInUser.username}!</p>
-            <button onClick={handleLogout}>Logout</button>
+            {/* <button onClick={handleLogout}>Logout</button> */}
           </div>
         ) : (
           <div>
@@ -56,6 +56,5 @@ export const SignUp = () => {
       </div>
     );
   };
-  
   
   

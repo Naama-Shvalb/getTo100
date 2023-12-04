@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import {user} from '../User';
-import { usersArr } from '../User';
+import {User} from '../User';
 
 export const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
- // const [loggedInUser, setLoggedInUser] = useState(null);
+ const [loggedInUser, setLoggedInUser] = useState(null);
 
   // Function to handle login
   const handleLogin = () => {
