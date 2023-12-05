@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {User} from '../User';
 import { SignUp } from './SignUp';
-import { App } from './Aaa'
+import { Aaa } from './Aaa'
 
 
 export const Login = () => {
