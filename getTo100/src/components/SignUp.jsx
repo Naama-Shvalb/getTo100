@@ -1,24 +1,25 @@
 import React, { useState } from 'react';
 import {User} from '../User';
-import { usersArr as usersArr1 } from '../User';
 
 export const SignUp = () => {
     const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
+    const [emailVerification, setemailVerification] = useState('');
     const [loggedInUser, setLoggedInUser] = useState(null);
       
   
-    // Function to handle signup
     const handleSignup = () => {
-      const users =  JSON.stringify(usersArr1);
-      if(!usersArr1){
-        const usersArr=[];
+      const storedUser = JSON.parse(localStorage.getItem('storedUser')) || [];
+      if(storedUser.find(Element=>(Element.name === username && Element.email === email))){
+        alert('you are an existing user please log in')
       }
-      const newUser = { username, password };
-      localStorage.setItem('user', JSON.stringify(newUser));
+      if(email != emailVerification){
+        alert('please reenter your correct password!')
+      }
+      const newUser = new User(username, email);
+      storedUser.push(newUser);
+      localStorage.setItem('storedUser', JSON.stringify(storedUser));
       setLoggedInUser(newUser);
-      alert('Signup successful!');
     };
   
     return (
@@ -26,7 +27,6 @@ export const SignUp = () => {
         {loggedInUser ? (
           <div>
             <p>Welcome, {loggedInUser.username}!</p>
-            {/* <button onClick={handleLogout}>Logout</button> */}
           </div>
         ) : (
           <div>
@@ -38,18 +38,17 @@ export const SignUp = () => {
               onChange={(e) => setUsername(e.target.value)}
             />
             <input
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
             <input
               type='email'
-              placeholder='Email'
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}    
+              placeholder='Email verification'
+              value={emailVerification}
+              onChange={(e) => setemailVerification(e.target.value)}    
             />
-  
             <button onClick={handleSignup}>Signup</button>
           </div>
         )}

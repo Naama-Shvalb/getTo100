@@ -1,13 +1,11 @@
 export class User{
     name: string;
-    password: number;
     email: string;
     maxScore: number;
-    constructor({name, password, email, maxScore}){
+    constructor({name, email, maxScore}){
         this.name = name;
-        this.password = password;
         this.email = email;
-        this.maxScore = maxScore;
+        this.maxScore = 0;
     }
 }
 export const usersArr: User[] = [];
@@ -19,12 +17,12 @@ export class UsersCollection {
 
     constructor() {
         this.users = []; // Initialize users as an empty array
-        this.activeUser = new User({ name: 'Default', password: 0, email: '', maxScore: 0 });
-        this.prevActiveUser = new User({ name: 'Default', password: 0, email: '', maxScore: 0 });
+        this.activeUser = new User({ name: 'Default', email: '', maxScore: 0 });
+        this.prevActiveUser = new User({ name: 'Default', email: '', maxScore: 0 });
     }
 
     getActive(): User {
-        return new User({name: 'Naama', password: 123, email: 'w@w', maxScore: 10});
+        return new User({name: 'Naama', email: 'w@w', maxScore: 10});
     }
 
     addUser(user: User){

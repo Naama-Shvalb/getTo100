@@ -8,24 +8,23 @@ import { UserBoard } from './components/UserBoard';
 import {User, UsersCollection, userCollection} from './User';
 
 function App() {
-  userCollection.addUser('a', 1, 'a@a', 3);
-  userCollection.addUser('b', 2, 'b@b', 4);
-  userCollection.addUser('c', 3, 'c@c', 5);
+  // userCollection.addUser('a', 1, 'a@a', 3);
+  // userCollection.addUser('b', 2, 'b@b', 4);
+  // userCollection.addUser('c', 3, 'c@c', 5);
   
   
-  const allUsers = userCollection.getAllUsers();
+  // const allUsers = userCollection.getAllUsers();
 
 
   return (
     <>
     <Login/>
-    <SignUp/>
-    <div>
+    {/* <div>
       {allUsers.map((player)=>{
         <UserBoard user = {player}/>;
       })}
     </div>
-    {/* <UserBoard user = {}/> */}
+    <UserBoard user = {}/> */}
       
     </>
   );

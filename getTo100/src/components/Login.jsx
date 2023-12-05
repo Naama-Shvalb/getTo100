@@ -1,36 +1,33 @@
 import React, { useState } from 'react';
 import {User} from '../User';
+import { SignUp } from './SignUp';
+import { App } from './Aaa'
+
 
 export const Login = () => {
   const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
- const [loggedInUser, setLoggedInUser] = useState(null);
+  const [email, setEmail] = useState('');
+ const [loggedInUser, setLoggedInUser] = useState(false);
+ const [ToSignUp, setToSignUp] = useState(false);
 
-  // Function to handle login
   const handleLogin = () => {
-    const storedUser = JSON.parse(localStorage.getItem('user'));
-    if (storedUser && storedUser.username === username && storedUser.password === password) {
-      setLoggedInUser(storedUser);
-      alert('Login successful!');
-    } else {
-      alert('Invalid credentials. Please try again.');
+    const storedUser = JSON.parse(localStorage.getItem('storedUser'));
+    if(storedUser){
+      const user = storedUser.find(Element=>(Element.email))
+      if (storedUser.name === username && storedUser.email === email) {
+        setLoggedInUser(true);
+      }
+    } else{
+      alert('you are not an existing user please sign up');
+      setToSignUp(true);
     }
   };
-
-  // // Function to handle logout
-  // const handleLogout = () => {
-  //   setLoggedInUser(null);
-  //   alert('Logged out successfully!');
-  // };
 
   return (
     <div>
       {loggedInUser ? (
-        <div>
-          <p>Welcome, {loggedInUser.username}!</p>
-          {/* <button onClick={handleLogout}>Logout</button> */}
-        </div>
-      ) : (
+        <Aaa></Aaa>
+      ) : ToSignUp ? (<singUp></singUp>) : (
         <div>
           <h2>Login</h2>
           <input
@@ -40,10 +37,10 @@ export const Login = () => {
             onChange={(e) => setUsername(e.target.value)}
           />
           <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <button onClick={handleLogin}>Login</button>
         </div>
