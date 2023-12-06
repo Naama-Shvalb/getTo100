@@ -12,7 +12,8 @@ export const SingUp = () => {
     const handleSignup = () => {
         const storedUser = JSON.parse(localStorage.getItem('storedUser')) || [];
         if(storedUser.find(Element=>(Element.email === email))){
-          alert('you are an existing user please log in')
+          alert('you are an existing user please log in');
+          setEmail('');
         }
         const newUser = new User(username, email);
         storedUser.push(newUser);
@@ -20,6 +21,10 @@ export const SingUp = () => {
         alert('The user has successfully registered');
         setToLogin(true);
       };
+
+    const handleLogin = () => {
+      setLoggedInUser(true);
+    }
 
       return (
         <div>
@@ -44,6 +49,8 @@ export const SingUp = () => {
                 onChange={(e) => setEmail(e.target.value)}
               />
               <button onClick={handleSignup}>Signup</button>
+              <br />
+              <button onClick={handleLogin}>login</button>
             </div>
           )}
         </div>
