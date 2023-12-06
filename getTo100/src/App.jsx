@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import {Login} from './components/Login';
-import { SignUp } from './components/SignUp';
-//import reactLogo from './assets/react.svg';
-//import viteLogo from '/vite.svg';
+import { SingUp } from './components/SignUp';
 import './App.css';
 import { UserBoard } from './components/UserBoard';
-import {User, UsersCollection, userCollection} from './User';
+//import {User, UsersCollection, userCollection} from './User';
+import {User} from './User';
+
 
 function App() {
   // userCollection.addUser('a', 1, 'a@a', 3);

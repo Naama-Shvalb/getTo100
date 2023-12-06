@@ -2,7 +2,7 @@ export class User{
     name: string;
     email: string;
     maxScore: number;
-    constructor({name, email, maxScore}){
+    constructor(name, email){
         this.name = name;
         this.email = email;
         this.maxScore = 0;
@@ -15,15 +15,15 @@ export class UsersCollection {
     activeUser: User;
     prevActiveUser: User;
 
-    constructor() {
-        this.users = []; // Initialize users as an empty array
-        this.activeUser = new User({ name: 'Default', email: '', maxScore: 0 });
-        this.prevActiveUser = new User({ name: 'Default', email: '', maxScore: 0 });
-    }
+    // constructor() {
+    //     this.users = []; // Initialize users as an empty array
+    //     this.activeUser = new User({ name: 'Default', email: ''});
+    //     this.prevActiveUser = new User({ name: 'Default', email: ''});
+    // }
 
-    getActive(): User {
-        return new User({name: 'Naama', email: 'w@w', maxScore: 10});
-    }
+    // getActive(): User {
+    //     return new User({name: 'Naama', email: 'w@w', maxScore: 10});
+    // }
 
     addUser(user: User){
         this.users.push(user);
