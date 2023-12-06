@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import {User, userCollection} from '../User';
+import {User} from '../User';
+import{CurrentPlayer, playerCollection} from '../CurrentPlayer';
 import { SingUp } from './SignUp';
-//import { Aaa } from './Aaa';
 import { GameBoard } from './GameBoard';
 
 export const Login = () => {
@@ -13,12 +13,11 @@ export const Login = () => {
     const storedUser = JSON.parse(localStorage.getItem('storedUser')) || [];
     const user = storedUser.find(Element=>(Element.email === email));
     if(user){
-      //const players = userCollection.getAllUsers() || [];
-      if(userCollection.getUser(email)){
+      if(playerCollection.getPlayer(email)){
         alert("You are already in the game");
       } else {
-        userCollection.addUser(user);
-        alert("The player entered successfully, please enter another player or start the game");
+        playerCollection.addPlayer(user);
+        //alert("The player entered successfully, please enter another player or start the game");
       }
     } else {
       alert('you are not an existing user please insert another user or sign up');
@@ -32,7 +31,7 @@ export const Login = () => {
 
   const handStartGame = () => {
     //const players = JSON.parse(localStorage.getItem('players')) || [];
-    if(userCollection.getAllUsers().length < 2){
+    if(playerCollection.getAllPlayers().length < 2){
       alert("There are not enough players for the game, please add more players");
     } else {
       setLoggedInUser(true);

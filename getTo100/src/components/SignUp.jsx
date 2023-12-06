@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {User} from '../User';
+import{CurrentPlayer, playerCollection} from '../CurrentPlayer';
 import { Login } from './Login';
 import { GameBoard } from './GameBoard';
 
@@ -23,7 +24,7 @@ export const SingUp = () => {
       };
 
     const handleLogin = () => {
-      setLoggedInUser(true);
+      setToLogin(true);
     };
 
       return (

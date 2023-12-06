@@ -4,8 +4,9 @@ import { SingUp } from './components/SignUp';
 import './App.css';
 import { GameBoard } from './components/GameBoard';
 //import { UserBoard } from './components/UserBoard';
+import {User} from './User';
+import{CurrentPlayer, playerCollection} from './CurrentPlayer';
 
-import {User, UsersCollection, userCollection} from './User';
 //import {User} from './User';
 
 
@@ -15,7 +16,7 @@ function App() {
   // userCollection.addUser('c', 3, 'c@c', 5);
   
   
-  const allUsers = userCollection.getAllUsers();
+  const allUsers = playerCollection.getAllPlayers();
 
 
   return (
