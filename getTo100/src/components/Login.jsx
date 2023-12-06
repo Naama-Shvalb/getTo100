@@ -6,25 +6,24 @@ import { Aaa } from './Aaa'
 
 export const Login = () => {
   const [email, setEmail] = useState('');
- const [loggedInUser, setLoggedInUser] = useState(false);
- const [ToSignUp, setToSignUp] = useState(false);
+  const [loggedInUser, setLoggedInUser] = useState(false);
+  const [ToSignUp, setToSignUp] = useState(false);
 
   const handleLogin = () => {
-    const storedUser = JSON.parse(localStorage.getItem('storedUser'));
+    const storedUser = JSON.parse(localStorage.getItem('storedUser')) || [];
     const user = storedUser.find(Element=>(Element.email === email))
     if(user){
-      const players = JSON.parse(localStorage.getItem('players'))||[];
+      const players = JSON.parse(localStorage.getItem('players')) || [];
       if(players.find(Element=>(Element.email === email))){
         alert("You are already in the game");
-        return;
       } else {
         players.push(user);
-        setEmail("");
         alert("The player entered successfully, please enter another player or start the game");
-        return;
       }
+    } else {
+      alert('you are not an existing user please insert another user or sign up');
     }
-    alert('you are not an existing user please insert another user or sign up');
+    setEmail("");
   }
 
   const handSingUp = () => {
@@ -32,8 +31,8 @@ export const Login = () => {
   }
 
   const handStartGame = () => {
-    const players = JSON.parse(localStorage.getItem('players'))||[];
-    if(players.len<2){
+    const players = JSON.parse(localStorage.getItem('players')) || [];
+    if(players.length<2){
       alert("There are not enough players for the game, please add more players");
     } else {
       setLoggedInUser(true);
