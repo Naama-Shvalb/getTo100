@@ -19,7 +19,7 @@ export const Login = () => {
         return;
       } else {
         players.push(user);
-        setLoggedInUser(true);
+        alert("The player entered successfully, please enter another player or start the game");
         return;
       }
     }
@@ -30,6 +30,15 @@ export const Login = () => {
     setToSignUp(true);
   }
 
+  const handStartGame = () => {
+    const players = JSON.parse(localStorage.getItem('players'))||[];
+    if(players.len<2){
+      alert("There are not enough players for the game, please add more players");
+    } else {
+      setLoggedInUser(true);
+    }
+  }
+
   return (
     <div>
       {loggedInUser ? (
@@ -37,7 +46,7 @@ export const Login = () => {
       ) : ToSignUp ? (<SingUp></SingUp>) : (
         <div>
           <h1>wellcame to gmae get to 100!!</h1>
-          <h2>Login</h2>
+          <h2>insert player</h2>
           <input
             type="email"
             placeholder="Email"
@@ -45,8 +54,9 @@ export const Login = () => {
             onChange={(e) => setEmail(e.target.value)}
           />
           <button onClick={handleLogin}>Login</button>
-          <br />
           <button onClick={handSingUp}>sing up</button>
+          <br />
+          <button onClick={handStartGame}>enter to gmame</button>
         </div>
       )}
     </div>

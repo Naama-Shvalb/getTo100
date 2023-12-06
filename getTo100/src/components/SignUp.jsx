@@ -17,8 +17,10 @@ export const SingUp = () => {
         const newUser = new User(username, email);
         storedUser.push(newUser);
         localStorage.setItem('storedUser', JSON.stringify(storedUser));
+        alert('The user has successfully registered');
         setToLogin(true);
       };
+
       return (
         <div>
           {loggedInUser ? (
