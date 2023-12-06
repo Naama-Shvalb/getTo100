@@ -19,6 +19,7 @@ export const Login = () => {
         return;
       } else {
         players.push(user);
+        setEmail("");
         alert("The player entered successfully, please enter another player or start the game");
         return;
       }
