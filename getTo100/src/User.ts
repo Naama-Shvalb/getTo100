@@ -15,15 +15,15 @@ export class UsersCollection {
     activeUser: User;
     prevActiveUser: User;
 
-    // constructor() {
-    //     this.users = []; // Initialize users as an empty array
-    //     this.activeUser = new User({ name: 'Default', email: ''});
-    //     this.prevActiveUser = new User({ name: 'Default', email: ''});
-    // }
+    constructor() {
+        this.users = []; // Initialize users as an empty array
+        this.activeUser = new User('Default', '');
+        this.prevActiveUser = new User('Default', '');
+    }
 
-    // getActive(): User {
-    //     return new User({name: 'Naama', email: 'w@w', maxScore: 10});
-    // }
+    getActive(): User {
+        return new User('Naama', 'w@w');
+    }
 
     addUser(user: User){
         this.users.push(user);

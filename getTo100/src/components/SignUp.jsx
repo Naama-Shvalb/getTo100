@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {User} from '../User';
-import {Aaa} from './Aaa'
+import {Aaa} from './Aaa';
+import { Login } from './Login';
 
 export const SingUp = () => {
     const [username, setUsername] = useState('');
@@ -12,12 +13,11 @@ export const SingUp = () => {
         const storedUser = JSON.parse(localStorage.getItem('storedUser')) || [];
         if(storedUser.find(Element=>(Element.email === email))){
           alert('you are an existing user please log in')
-          setToLogin(true);
         }
         const newUser = new User(username, email);
         storedUser.push(newUser);
         localStorage.setItem('storedUser', JSON.stringify(storedUser));
-        setLoggedInUser(true);
+        setToLogin(true);
       };
       return (
         <div>
