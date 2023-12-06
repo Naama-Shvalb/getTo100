@@ -4,17 +4,17 @@ import{CurrentPlayer, playerCollection} from '../CurrentPlayer';
 
 
 export const UserBoard = ({user}) =>{
-
-    const [number, setNumber] = useState(0);
+console.log(user);
+    const [number, setNumber] = useState(user.number);
     const [steps, setSteps] = useState(0);
     
-    useEffect(() => {
-        const min = 1; // Minimum value (1 in this case)
-        const max = 99; // Maximum value (99 in this case)
-        const randNumber = Math.floor(Math.random() * (max - min + 1)) + min;
-        setNumber(randNumber);
-        user.number = randNumber;
-    }, []);
+    // useEffect(() => {
+    //     const min = 1; // Minimum value (1 in this case)
+    //     const max = 99; // Maximum value (99 in this case)
+    //     const randNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+    //     setNumber(randNumber);
+    //     user.number = randNumber;
+    // }, []);
 
     const add1 = () => {
         const updatedNumber = number + 1;
@@ -63,7 +63,6 @@ export const UserBoard = ({user}) =>{
             <button onClick={() => multiplyBy2()}>x 2</button>
             <button onClick={() => divideBy2()}>: 2</button>
         </div>
-
         </>
     );
 

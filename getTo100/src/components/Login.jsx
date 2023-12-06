@@ -16,7 +16,8 @@ export const Login = () => {
       if(playerCollection.getPlayer(email)){
         alert("You are already in the game");
       } else {
-        playerCollection.addPlayer(user);
+        const myPlayer = new CurrentPlayer(user.name, user.email, user.maxScore);
+        playerCollection.addPlayer(myPlayer);
         //alert("The player entered successfully, please enter another player or start the game");
       }
     } else {

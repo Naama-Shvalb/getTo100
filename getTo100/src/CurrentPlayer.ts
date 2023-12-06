@@ -4,12 +4,12 @@ export class CurrentPlayer{
     number: Number;
     steps: Number;
     maxScore: number;
-    constructor(name, email){
+    constructor(name, email, maxScore){
         this.name = name;
         this.email = email;
-        this.number = 0;
+        this.maxScore = maxScore;
+        this.number = Math.floor(Math.random() * 100);
         this.steps = 0;
-        this.maxScore = 0;
     }
 }
 
@@ -17,11 +17,13 @@ export class PlayerCollection {
     players: CurrentPlayer[];
     activePlayer: CurrentPlayer;
     prevActivePlayer: CurrentPlayer;
+    numberPlayers: number;
 
     constructor() {
         this.players = []; // Initialize users as an empty array
-        this.activePlayer = new CurrentPlayer('Default', '');
-        this.prevActivePlayer = new CurrentPlayer('Default', '');
+        this.activePlayer = new CurrentPlayer('Default', '', 0);
+        this.prevActivePlayer = new CurrentPlayer('Default', '', 0);
+        this.numberPlayers = 0;
     }
 
     getActive(): CurrentPlayer {
@@ -30,6 +32,7 @@ export class PlayerCollection {
 
     addPlayer(player: CurrentPlayer){
         this.players.push(player);
+        this.numberPlayers++;
     }
 
     getPlayer(email){
