@@ -3,7 +3,7 @@ import {User, UsersCollection, userCollection} from '../User';
 
 
 export const UserBoard = ({user}) =>{
-
+   
 
     return(
         <>

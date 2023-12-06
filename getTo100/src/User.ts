@@ -29,6 +29,10 @@ export class UsersCollection {
         this.users.push(user);
     }
 
+    getUser(email){
+        return this.users.find(Element=>(Element.email === email));
+    }
+
     getAllUsers(): User[]{
         const tempUsers: User[] = [];
         this.users.map((user, index)=>{

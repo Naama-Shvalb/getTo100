@@ -2,9 +2,11 @@ import { useState } from 'react';
 import {Login} from './components/Login';
 import { SingUp } from './components/SignUp';
 import './App.css';
-import { UserBoard } from './components/UserBoard';
-//import {User, UsersCollection, userCollection} from './User';
-import {User} from './User';
+import { GameBoard } from './components/GameBoard';
+//import { UserBoard } from './components/UserBoard';
+
+import {User, UsersCollection, userCollection} from './User';
+//import {User} from './User';
 
 
 function App() {
@@ -13,18 +15,18 @@ function App() {
   // userCollection.addUser('c', 3, 'c@c', 5);
   
   
-  // const allUsers = userCollection.getAllUsers();
+  const allUsers = userCollection.getAllUsers();
 
 
   return (
     <>
     <Login/>
     {/* <div>
-      {allUsers.map((player)=>{
+      {allUsers.map((player, index)=>{
         <UserBoard user = {player}/>;
       })}
-    </div>
-    <UserBoard user = {}/> */}
+    </div> */}
+    {/* <UserBoard user = {}/> */}
       
     </>
   );

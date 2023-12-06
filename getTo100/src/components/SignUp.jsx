@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {User} from '../User';
-import {Aaa} from './Aaa';
 import { Login } from './Login';
+import { GameBoard } from './GameBoard';
 
 export const SingUp = () => {
     const [username, setUsername] = useState('');
@@ -24,13 +24,13 @@ export const SingUp = () => {
 
     const handleLogin = () => {
       setLoggedInUser(true);
-    }
+    };
 
       return (
         <div>
           {loggedInUser ? (
-            <Aaa>
-            </Aaa>
+            <GameBoard>
+            </GameBoard>
           ) : ToLogin ? (
             <Login></Login>
           ) : (
@@ -55,4 +55,4 @@ export const SingUp = () => {
           )}
         </div>
       );
-}
+};

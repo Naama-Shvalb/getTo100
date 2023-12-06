@@ -12,6 +12,7 @@ module.exports = {
   settings: { react: { version: '18.2' } },
   plugins: ['react-refresh'],
   rules: {
+    'react/jsx-key': 'off', // Disables the react/jsx-key rule
     "react/prop-types": "off",
     "semi-spacing": ["error", { "before": false, "after": true }],
     "semi": "error",
