@@ -3,39 +3,34 @@ import {User} from '../User';
 import{CurrentPlayer, playerCollection} from '../CurrentPlayer';
 
 
-export const UserBoard = ({user}) => {
+export const UserBoard = ({user, onExit }) => {
 
     const [number, setNumber] = useState(user.number);
     const [steps, setSteps] = useState(0);
     const [youWin, setWin] = useState(false);
 
-    if(number === 100){
-        console.log('win');
-    }  
-
     const handleActions = (operator) => {
         if(user.email === playerCollection.getActive().email){
-            let bool = false;
             switch(operator){
                 case '+':
-                    bool = add1();
+                    add1();
                     break;
                 case '-':
-                    bool = reduce1();
+                    reduce1();
                     break;
                 case '*':
-                    bool = multiplyBy2();
+                    multiplyBy2();
                     break;
                 case '/':
-                    bool = divideBy2();        
+                    divideBy2();        
             }
-            if(bool){
-                if(user.number == 100){
-                    setWin(true);
-                }
-                const nextPlayer = playerCollection.getNextPlayer();
-                playerCollection.setActive(nextPlayer);
+          
+            if(user.number == 100){
+                handleWin();
             }
+            const nextPlayer = playerCollection.getNextPlayer();
+            playerCollection.setActive(nextPlayer);
+            
         }
     };
 
@@ -46,31 +41,24 @@ export const UserBoard = ({user}) => {
         setSteps(steps + 1);
         user.number = updatedNumber;
         user.steps = steps + 1;
-        return true;
     };
 
     const reduce1 = () => {
-        if(number > 0 ){
-            const updatedNumber = number - 1;
-            setNumber(updatedNumber);
-            setSteps(steps + 1);
-            user.number = updatedNumber;
-            user.steps = steps + 1;
-            return true;
-        }
-        return false;
+        const updatedNumber = number - 1;
+        setNumber(updatedNumber);
+        setSteps(steps + 1);
+        user.number = updatedNumber;
+        user.steps = steps + 1;
+        
     };
 
     const multiplyBy2 = () => {
-        if(number*2 <= 100){
-            const updatedNumber = number * 2;
-            setNumber(updatedNumber);
-            setSteps(steps + 1);
-            user.number = updatedNumber;
-            user.steps = steps + 1;
-            return true;
-        }
-        return false;
+        const updatedNumber = number * 2;
+        setNumber(updatedNumber);
+        setSteps(steps + 1);
+        user.number = updatedNumber;
+        user.steps = steps + 1;
+        return true;
     };
 
     const divideBy2 = () => {
@@ -79,34 +67,55 @@ export const UserBoard = ({user}) => {
         setSteps(steps + 1);
         user.number = updatedNumber;
         user.steps = steps + 1;
-        return true;
     };
 
-    const handNewGame = () => {
+    const handleWin = () => {
+        setWin(true);
+        const score = calculateScore(steps);
+        if (!user.scores.includes(score)) {
+            user.scores.push(score);
+            const currentPlayer = playerCollection.getPlayer(user.email);
+            if (currentPlayer && !currentPlayer.scores.includes(score)) {
+                currentPlayer.scores.push(score);
+            }
+        }
+    };
+
+    const handleNewGame = () => {
+        console.log('new game');
         setNumber('0');
         setSteps(0);
         user.number = 0;
         user.steps = 0;
-    }
+        setWin(false); 
+    };
 
-    const handExit = () => {
-        takeOutPlayer(user);
-    }
-
+    const handleExit = () => {
+        playerCollection.removePlayer(user);
+        onExit(user); 
+    }; 
+      
+    const calculateScore = (steps) => {
+        return 100 - steps;
+    };
+    
+   
     return (
         <div>
           {youWin ? (
             <div>
-                <h1>you win!!!!!!!!!!!!!!!!</h1>
-              <button onClick={handNewGame}>new game</button>
-              <button onClick={handExit}>exit the game</button>
+              <h1>you win!!!!!!!!!!!!!!!!</h1>
+              <button onClick={handleNewGame}>new game</button>
+              <button onClick={handleExit}>exit the game</button>
             </div>
           ) : (
             <div>
               <h2>welcome {user.name}</h2>
               <h3>Number: {number}</h3>
               <h3>Steps: {steps}</h3>
-              <h3>max score: {user.maxScore}</h3>
+              <h3>
+              Scores: {user.scores.join(', ')}
+            </h3>
               <div>
                 <button onClick={() => handleActions('+')}>+ 1</button>
                 <button onClick={() => handleActions('-')}>- 1</button>
