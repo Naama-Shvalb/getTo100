@@ -8,9 +8,14 @@ export const GameBoard = () =>{
     //console.log(playerCollection.players);
     const [users, setUsers] = useState(playerCollection.players);
 
+    // const handleExit = (userToRemove) => {
+    //     setUsers(users.filter(user => user !== userToRemove));
+    //   };
+
     const handleExit = (userToRemove) => {
-        setUsers(users.filter(user => user !== userToRemove));
-      };
+        setUsers(users.filter(user => user.email !== userToRemove.email));
+    };
+
     
     playerCollection.setActive(playerCollection.players[0]);
 

@@ -25,7 +25,7 @@ export const UserBoard = ({user, onExit }) => {
                     divideBy2();        
             }
           
-            if(user.number == 100){
+            if(user.number === 100 && !youWin){
                 handleWin();
             }
             const nextPlayer = playerCollection.getNextPlayer();
@@ -90,7 +90,7 @@ export const UserBoard = ({user, onExit }) => {
         setWin(false); 
     };
 
-    const handleExit = () => {
+    const handleExit1 = () => {
         playerCollection.removePlayer(user);
         onExit(user); 
     }; 
@@ -106,7 +106,7 @@ export const UserBoard = ({user, onExit }) => {
             <div>
               <h1>you win!!!!!!!!!!!!!!!!</h1>
               <button onClick={handleNewGame}>new game</button>
-              <button onClick={handleExit}>exit the game</button>
+              <button onClick={handleExit1}>exit the game</button>
             </div>
           ) : (
             <div>
