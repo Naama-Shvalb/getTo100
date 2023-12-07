@@ -18,16 +18,22 @@ export class PlayerCollection {
     activePlayer: CurrentPlayer;
     prevActivePlayer: CurrentPlayer;
     numberPlayers: number;
+    currentIndex: number;
 
     constructor() {
         this.players = []; // Initialize users as an empty array
         this.activePlayer = new CurrentPlayer('Default', '', 0);
         this.prevActivePlayer = new CurrentPlayer('Default', '', 0);
         this.numberPlayers = 0;
+        this.currentIndex = 0;
     }
 
     getActive(): CurrentPlayer {
         return this.activePlayer;
+    }
+
+    setActive(player: CurrentPlayer){
+        this.activePlayer = player;
     }
 
     addPlayer(player: CurrentPlayer){
@@ -46,6 +52,11 @@ export class PlayerCollection {
         })
         return tempPlayers;
     }
+
+    getNextPlayer(): CurrentPlayer {
+        this.currentIndex = (this.currentIndex + 1) % this.players.length;
+        return this.players[this.currentIndex];
+      }
 }
 
 export const playerCollection = new PlayerCollection();

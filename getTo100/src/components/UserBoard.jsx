@@ -3,18 +3,35 @@ import {User} from '../User';
 import{CurrentPlayer, playerCollection} from '../CurrentPlayer';
 
 
-export const UserBoard = ({user}) =>{
-console.log(user);
+export const UserBoard = ({user}) => {
+
     const [number, setNumber] = useState(user.number);
     const [steps, setSteps] = useState(0);
-    
-    // useEffect(() => {
-    //     const min = 1; // Minimum value (1 in this case)
-    //     const max = 99; // Maximum value (99 in this case)
-    //     const randNumber = Math.floor(Math.random() * (max - min + 1)) + min;
-    //     setNumber(randNumber);
-    //     user.number = randNumber;
-    // }, []);
+
+    if(number === 100){
+        console.log('win');
+    }  
+
+    const handleActions = (operator) => {
+        if(user === playerCollection.getActive()){       
+            switch(operator){
+                case '+':
+                    add1();
+                    break;
+                case '-':
+                    reduce1();
+                    break;
+                case '*':
+                    multiplyBy2();
+                    break;
+                case '/':
+                    divideBy2();        
+            }
+            const nextPlayer = playerCollection.getNextPlayer();
+            playerCollection.setActive(nextPlayer);
+        }
+    };
+
 
     const add1 = () => {
         const updatedNumber = number + 1;
@@ -48,7 +65,6 @@ console.log(user);
         user.steps = steps + 1;
     };
 
-
     return(
         <>
         <div>
@@ -58,10 +74,10 @@ console.log(user);
             <h3>max score: {user.maxScore}</h3>
         </div>
         <div>
-            <button onClick={() => add1()}>+ 1</button>
-            <button onClick={() => reduce1()}>- 1</button>
-            <button onClick={() => multiplyBy2()}>x 2</button>
-            <button onClick={() => divideBy2()}>: 2</button>
+            <button onClick={() => handleActions('+')}>+ 1</button>
+            <button onClick={() => handleActions('-')}>- 1</button>
+            <button onClick={() => handleActions('*')}>x 2</button>
+            <button onClick={() => handleActions('/')}>: 2</button>
         </div>
         </>
     );

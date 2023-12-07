@@ -5,7 +5,8 @@ import { UserBoard } from './UserBoard';
 
 
 export const GameBoard = () =>{
-    console.log(playerCollection.players);
+    //console.log(playerCollection.players);
+    playerCollection.setActive(playerCollection.players[0]);
 
     return(
         <>
