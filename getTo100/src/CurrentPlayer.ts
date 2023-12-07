@@ -41,6 +41,11 @@ export class PlayerCollection {
         this.numberPlayers++;
     }
 
+    takeOutPlayer(player: CurrentPlayer){
+        const index = this.players.indexOf(player);
+        this.players.splice(index);
+    } 
+
     getPlayer(email){
         return this.players.find(player=>(player.email === email));
     }
