@@ -44,6 +44,7 @@ export class PlayerCollection {
     removePlayer(player: CurrentPlayer){
         const index = this.players.indexOf(player);
         this.players.splice(index, 1);
+        return this.players;
         } 
 
     removePlayerByEmail(email) {
