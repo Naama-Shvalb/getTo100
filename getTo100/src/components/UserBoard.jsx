@@ -93,7 +93,7 @@ export const UserBoard = ({user, onExit }) => {
     };
 
     const handleExit1 = () => {
-        playerCollection.removePlayer(user);
+        //playerCollection.removePlayer(user);
         onExit(user); 
     }; 
       
