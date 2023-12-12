@@ -7,7 +7,7 @@ export class CurrentPlayer{
     constructor(name, email){
         this.name = name;
         this.email = email;
-        this.scores = [0,1,4];
+        this.scores = [];
         this.number = Math.floor(Math.random() * 100);
         this.steps = 0;
     }
@@ -41,7 +41,7 @@ export class PlayerCollection {
         this.numberPlayers++;
     }
 
-    removePlayer(player: CurrentPlayer){
+    removePlayer(player: CurrentPlayer) {
         const index = this.players.indexOf(player);
         this.players.splice(index, 1);
         } 

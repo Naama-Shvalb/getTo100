@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react';
 import {User} from '../User';   
 import{CurrentPlayer, playerCollection} from '../CurrentPlayer';
 
+const TARGET_SCORE = 100;
 
 export const UserBoard = ({user, onExit }) => {
 
     const [number, setNumber] = useState(user.number);
     const [steps, setSteps] = useState(0);
-    const [youWin, setWin] = useState(false);
+    const [isWin, setWin] = useState(false);
+
 
     const handleActions = (operator) => {
         if(user.email === playerCollection.getActive().email){
@@ -25,7 +27,7 @@ export const UserBoard = ({user, onExit }) => {
                     divideBy2();        
             }
           
-            if(user.number === 100 && !youWin){
+            if(user.number === TARGET_SCORE && !isWin){
                 handleWin();
             }
             const nextPlayer = playerCollection.getNextPlayer();
@@ -83,7 +85,7 @@ export const UserBoard = ({user, onExit }) => {
 
     const handleNewGame = () => {
         console.log('new game');
-        setNumber('0');
+        setNumber(Math.floor(Math.random() * TARGET_SCORE));
         setSteps(0);
         user.number = 0;
         user.steps = 0;
@@ -96,13 +98,14 @@ export const UserBoard = ({user, onExit }) => {
     }; 
       
     const calculateScore = (steps) => {
-        return 100 - steps;
+        return TARGET_SCORE - steps;
     };
     
    
     return (
         <div>
-          {youWin ? (
+            {user.name}
+          {isWin ? (
             <div>
               <h1>you win!!!!!!!!!!!!!!!!</h1>
               <button onClick={handleNewGame}>new game</button>
