@@ -3,7 +3,7 @@ export class CurrentPlayer{
     email: string;
     number: Number;
     steps: Number;
-    scores: Number[];
+    scores: number[];
     constructor(name, email){
         this.name = name;
         this.email = email;
@@ -70,6 +70,14 @@ export class PlayerCollection {
         this.currentIndex = (this.currentIndex + 1) % this.players.length;
         return this.players[this.currentIndex];
       }
+
+    getUserAvrage(player: CurrentPlayer): number {
+        let totalScore = 0;
+        player.scores.forEach((score)=>{
+            totalScore += score;
+        });
+        return totalScore / player.scores.length;
+    }
 }
 
 export const playerCollection = new PlayerCollection();

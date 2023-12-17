@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import {User} from '../User';   
 import{CurrentPlayer, playerCollection} from '../CurrentPlayer';
+import { GameBoard } from './GameBoard';
 
 const TARGET_SCORE = 100;
 
-export const UserBoard = ({user, onExit }) => {
+export const UserBoard = ({user, onExit, handleScore }) => {
 
     const [number, setNumber] = useState(user.number);
     const [steps, setSteps] = useState(0);
@@ -81,6 +82,7 @@ export const UserBoard = ({user, onExit }) => {
                 currentPlayer.scores.push(score);
             }
         }
+        handleScore(user);
     };
 
     const handleNewGame = () => {
@@ -93,7 +95,7 @@ export const UserBoard = ({user, onExit }) => {
     };
 
     const handleExit1 = () => {
-        //playerCollection.removePlayer(user);
+        playerCollection.removePlayer(user);
         onExit(user); 
     }; 
       

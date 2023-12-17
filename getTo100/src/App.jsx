@@ -11,10 +11,6 @@ import{CurrentPlayer, playerCollection} from './CurrentPlayer';
 
 
 function App() {
-  // userCollection.addUser('a', 1, 'a@a', 3);
-  // userCollection.addUser('b', 2, 'b@b', 4);
-  // userCollection.addUser('c', 3, 'c@c', 5);
-  
   
   const allUsers = playerCollection.getAllPlayers();
 
