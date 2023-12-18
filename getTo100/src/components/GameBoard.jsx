@@ -14,7 +14,7 @@ export const GameBoard = () =>{
     };
 
     const handleScore = (user) => {
-        HighScores.
+        
 
     };
 

@@ -8,17 +8,15 @@ export const HighScores = () => {
     const [highScores, getHighScores] = useState(JSON.parse(localStorage.getItem('storedScores')) || []);
 
     const checkScores = ()=>{
+
+    };
+     
+
+return(
+    <>
+   { highScores ? (<h1></h1>):(<h2></h2>)}
         
-    }
-        
+    </>
 
-    return(
-        { highScores ?(
-            
-        )
-                
-        }
-
-    )
-
+);
 };
