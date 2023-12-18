@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {User} from '../User';   
 import{CurrentPlayer, playerCollection} from '../CurrentPlayer';
-import { GameBoard } from './GameBoard';
 
 const TARGET_SCORE = 100;
 
@@ -74,33 +73,22 @@ export const UserBoard = ({user, onExit, handleScore }) => {
 
     const handleWin = () => {
         setWin(true);
-        const score = calculateScore(steps);
-        if (!user.scores.includes(score)) {
-            user.scores.push(score);
-            const currentPlayer = playerCollection.getPlayer(user.email);
-            if (currentPlayer && !currentPlayer.scores.includes(score)) {
-                currentPlayer.scores.push(score);
-            }
-        }
-        handleScore(user);
+        user.scores.push(steps+1);
     };
 
     const handleNewGame = () => {
-        console.log('new game');
         setNumber(Math.floor(Math.random() * TARGET_SCORE));
         setSteps(0);
         user.number = 0;
         user.steps = 0;
-        setWin(false); 
+        setWin(false);
+        handleScore(user);
     };
 
     const handleExit1 = () => {
         playerCollection.removePlayer(user);
-        onExit(user); 
-    }; 
-      
-    const calculateScore = (steps) => {
-        return TARGET_SCORE - steps;
+        onExit(user);
+        handleScore(user);
     };
     
    

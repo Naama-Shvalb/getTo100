@@ -70,14 +70,6 @@ export class PlayerCollection {
         this.currentIndex = (this.currentIndex + 1) % this.players.length;
         return this.players[this.currentIndex];
       }
-
-    getUserAvrage(player: CurrentPlayer): number {
-        let totalScore = 0;
-        player.scores.forEach((score)=>{
-            totalScore += score;
-        });
-        return totalScore / player.scores.length;
-    }
 }
 
 export const playerCollection = new PlayerCollection();

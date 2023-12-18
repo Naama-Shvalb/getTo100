@@ -18,6 +18,7 @@ export const SingUp = () => {
         }
         const newUser = new User(username, email);
         storedUser.push(newUser);
+        storedUser.sort((a, b) => a.averageScore - b.averageScore);
         localStorage.setItem('storedUser', JSON.stringify(storedUser));
         alert('The user has successfully registered');
         setToLogin(true);
