@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {User} from '../User';   
 import{CurrentPlayer, playerCollection} from '../CurrentPlayer';
+import './UserBoard.css';
 
 const TARGET_SCORE = 100;
 
@@ -9,10 +10,25 @@ export const UserBoard = ({user, onExit, handleScore }) => {
     const [number, setNumber] = useState(user.number);
     const [steps, setSteps] = useState(0);
     const [isWin, setWin] = useState(false);
+    const [activePlayer, setActivePlayer] = useState(playerCollection.getActive());
 
+    useEffect(() => {
+        const handleActivePlayerChange = () => {
+            setActivePlayer(playerCollection.getActive());
+        };
+
+        const interval = setInterval(() => {
+            handleActivePlayerChange();
+        }, 1000); // Update the active player every second
+
+        return () => {
+            clearInterval(interval);
+        };
+    }, []);
 
     const handleActions = (operator) => {
-        if(user.email === playerCollection.getActive().email){
+      if (user.email === activePlayer.email) {
+            const activeClass = 'activeUser';
             switch(operator){
                 case '+':
                     add1();
@@ -35,6 +51,8 @@ export const UserBoard = ({user, onExit, handleScore }) => {
             
         }
     };
+
+    const activeClass = user.email === activePlayer.email ? 'activeUser' : 'UserBoard';
 
 
     const add1 = () => {
@@ -93,11 +111,10 @@ export const UserBoard = ({user, onExit, handleScore }) => {
     
    
     return (
-        <div>
-            {user.name}
+        <div className={activeClass}>
           {isWin ? (
-            <div>
-              <h1>you win!!!!!!!!!!!!!!!!</h1>
+            <div className='winBoard'>
+              <h1>you win!</h1>
               <button onClick={handleNewGame}>new game</button>
               <button onClick={handleExit1}>exit the game</button>
             </div>

@@ -1,0 +1,42 @@
+.UserBoard{
+    margin-left: 20px;
+    margin-right: 20px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    padding: 5px;
+    box-shadow: 10px 5px 5px #1a1a1a;
+    background-color: hwb(60 95% 3%);
+    color: #1a1a1aed;
+    width: 271px;
+}
+
+button{
+    margin-left: 2px;
+    margin-right: 2px;
+    background-color: #1a1a1a !important;
+    color: hwb(60 95% 3%) !important;
+}
+
+.activeUser{
+    margin-left: 20px;
+    margin-right: 20px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    padding: 5px;
+    box-shadow: 10px 5px 5px green !important;
+    background-color: hwb(60 95% 3%);
+    color: #1a1a1aed;
+    width: 271px;
+
+
+
+}
+
+.winBoard{
+    text-align: center !important;
+}
+
+.winBoard > button{
+    display: block !important;
+}
+

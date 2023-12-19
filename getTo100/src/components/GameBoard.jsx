@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {User} from '../User'; 
 import{CurrentPlayer, playerCollection} from '../CurrentPlayer';
 import { UserBoard } from './UserBoard';
+import './GameBoard.css';
 
 
 export const GameBoard = () =>{
@@ -26,25 +27,30 @@ export const GameBoard = () =>{
         storedUser.sort((a, b) => a.averageScore - b.averageScore);
         setHighScores([storedUser[0],storedUser[1],storedUser[2]]);
         localStorage.setItem('storedUser', JSON.stringify(storedUser));
-    }
+    };
 
     playerCollection.setActive(playerCollection.players[0]);
 
     return(
         <>
-        <h1>Welcome to Get To 100 game</h1>
-        <h2>Use the buttons below to reach to 100 as few steps as possible</h2>
-        <p>----------------------------------------------------------------------------</p>
-        <h2>top players</h2>
-        {highScores.map((Element) => (
-          <h3>{Element.name}: {Element.averageScore}</h3>
-        ))}
-        <p>----------------------------------------------------------------------------</p>
-        <div></div>
-        <div>
-        {playerCollection.players.map((player)=>(
-            <UserBoard key = {player.email} user = {player} onExit={() => handleExit(player)} handleScore = {topPlayers}/>
-            ))}
+        <div className='GameBoard'>
+            <h2>Welcome to Get To 100 game</h2>
+            <h3>Use the buttons below to reach to 100 as few steps as possible</h3>
+            <div className='topPlayers'>
+                <h2 className='topPlayersTitle'>top players</h2>
+                {highScores.map((Element) => (
+                <h3 className='topPlayersDetails'>
+                    {Element && Element.name ? Element.name : 'No Name'}: 
+                    {Element && Element.averageScore ? Element.averageScore : 'No Score'}
+                </h3>
+                ))}
+            </div>
+            <div></div>
+            <div className='UsersBoards'>
+                {playerCollection.players.map((player)=>(
+                    <UserBoard key = {player.email} user = {player} onExit={() => handleExit(player)} handleScore = {topPlayers}/>
+                ))}
+            </div>
         </div>
         </>
     );

@@ -1,0 +1,33 @@
+body{
+    background-color: hwb(60 95% 3%);
+}
+.GameBoard{
+    width: 100%;
+
+}
+
+.topPlayers{
+    /* display: block; */
+    justify-content: center;
+    border: 2px solid lightsalmon;
+    border-radius: 20px;
+}
+
+.topPlayersTitle{
+    display: block;
+    justify-content: center;
+
+}
+
+.topPlayersDetails{
+    display: inline-flex;
+    justify-content: center;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.UsersBoards{
+    display: flex;
+    margin-top: 10px;
+}
+
