@@ -132,6 +132,7 @@ export const UserBoard = ({user, onExit, handleScore }) => {
             <div className='winBoard'>
               <h1>you win!</h1>
               <button onClick={handleNewGame}>new game</button>
+              <br />
               <button onClick={handleExit1}>exit the game</button>
             </div>
           ) : (
