@@ -22,8 +22,6 @@ export class PlayerCollection {
 
     constructor() {
         this.players = []; 
-        // this.activePlayer = new CurrentPlayer('Default', '');
-        // this.prevActivePlayer = new CurrentPlayer('Default', '');
         this.numberPlayers = 0;
         this.currentIndex = 0;
     }

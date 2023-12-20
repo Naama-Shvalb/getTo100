@@ -11,8 +11,6 @@ export const GameBoard = () =>{
     const [highScores, setHighScores] = useState([]);
 
     useEffect(() => {
-        playerCollection.setActive(playerCollection.players[0]);
-        playerCollection.setCurrentIndex(0);
         let storedUser = JSON.parse(localStorage.getItem('storedUser'));
         topPlayers(storedUser);
     }, []);
@@ -44,9 +42,6 @@ export const GameBoard = () =>{
         setHighScores([storedUser[i],storedUser[i+1],storedUser[i+2]]);
     };
 
-    //setHighScores(topPlayers(JSON.parse(localStorage.getItem('storedUser'))));
-
-    playerCollection.setActive(playerCollection.players[0]);
 
     return(
         <>

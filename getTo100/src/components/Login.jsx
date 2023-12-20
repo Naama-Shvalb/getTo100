@@ -31,6 +31,8 @@ export const Login = () => {
   };
 
   const handStartGame = () => {
+    playerCollection.setActive(playerCollection.players[0]);
+    playerCollection.setCurrentIndex(0);
     setLoggedInUser(true);
   };
 
