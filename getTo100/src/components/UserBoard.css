@@ -38,10 +38,11 @@ button{
 }
 
 .winBoard{
-    text-align: center !important;
+    justify-content: center;
 }
 
 .winBoard > button{
-    display: block !important;
+    margin-bottom: 20px;
+
 }
 
