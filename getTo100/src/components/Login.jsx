@@ -3,6 +3,7 @@ import {User} from '../User';
 import{CurrentPlayer, playerCollection} from '../CurrentPlayer';
 import { SingUp } from './SignUp';
 import { GameBoard } from './GameBoard';
+import './SignUpLogin.css';
 
 export const Login = () => {
   const [email, setEmail] = useState('');
@@ -46,8 +47,8 @@ export const Login = () => {
       {loggedInUser ? (
        <GameBoard></GameBoard>
       ) : ToSignUp ? (<SingUp></SingUp>) : (
-        <div>
-          <h1>wellcame to gmae get to 100!!</h1>
+        <div className='signUpLogin-container'>
+          <h1>welcome to get to 100</h1>
           <h2>insert player</h2>
           <input
             type="email"
@@ -55,10 +56,10 @@ export const Login = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <button onClick={handleLogin}>Login</button>
-          <button onClick={handSingUp}>sing up</button>
+          <button className='loginBtn' onClick={handleLogin}>Login</button>
+          <button className='signUpBtn' onClick={handSingUp}>sing up</button>
           <br />
-          <button onClick={handStartGame}>enter to gmame</button>
+          <button className='enterToGameBtn'onClick={handStartGame}>enter to game</button>
         </div>
       )}
     </div>

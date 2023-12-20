@@ -36,6 +36,16 @@ export class PlayerCollection {
         this.activePlayer = player;
     }
 
+    getCorrentIndex(): number{
+        return this.currentIndex;
+    }
+
+    setCurrentIndex(index: number) {
+        this.currentIndex = index >= 0 && index < this.players.length ? index : 0; // Ensure index is within bounds
+    }
+    
+    
+
     addPlayer(player: CurrentPlayer){
         this.players.push(player);
         this.numberPlayers++;
@@ -45,7 +55,7 @@ export class PlayerCollection {
         const index = this.players.indexOf(player);
         this.players.splice(index, 1);
         return this.players;
-        } 
+    } 
 
     removePlayerByEmail(email) {
         const playerIndex = this.players.findIndex(player => player.email === email);
@@ -69,7 +79,7 @@ export class PlayerCollection {
     getNextPlayer(): CurrentPlayer {
         this.currentIndex = (this.currentIndex + 1) % this.players.length;
         return this.players[this.currentIndex];
-      }
+    }
 }
 
 export const playerCollection = new PlayerCollection();

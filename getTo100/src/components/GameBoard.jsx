@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect} from 'react';
 import {User} from '../User'; 
 import{CurrentPlayer, playerCollection} from '../CurrentPlayer';
 import { UserBoard } from './UserBoard';
@@ -10,6 +10,11 @@ export const GameBoard = () =>{
     let storedUser = JSON.parse(localStorage.getItem('storedUser'));
     const [users, setUsers] = useState(playerCollection.players);
     const [highScores, setHighScores] = useState([storedUser[0],storedUser[1],storedUser[2]]);
+
+    useEffect(() => {
+        playerCollection.setActive(playerCollection.players[0]);
+        playerCollection.setCurrentIndex(0);
+    }, []);
     
     const handleExit = (userToRemove) => {
         setUsers(users.filter(user => user.email !== userToRemove.email));

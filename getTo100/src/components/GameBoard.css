@@ -11,6 +11,7 @@ body{
     justify-content: center;
     border: 2px solid lightsalmon;
     border-radius: 20px;
+    margin-bottom: 50px;
 }
 
 .topPlayersTitle{
@@ -28,6 +29,7 @@ body{
 
 .UsersBoards{
     display: flex;
+    flex-wrap: wrap;
     margin-top: 10px;
 }
 

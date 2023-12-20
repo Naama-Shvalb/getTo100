@@ -19,7 +19,7 @@ export const UserBoard = ({user, onExit, handleScore }) => {
 
         const interval = setInterval(() => {
             handleActivePlayerChange();
-        }, 1000); // Update the active player every second
+        }, 500); // Update the active player every second
 
         return () => {
             clearInterval(interval);
@@ -28,7 +28,7 @@ export const UserBoard = ({user, onExit, handleScore }) => {
 
     const handleActions = (operator) => {
       if (user.email === activePlayer.email) {
-            const activeClass = 'activeUser';
+            //const activeClass = 'activeUser';
             switch(operator){
                 case '+':
                     add1();
@@ -90,8 +90,20 @@ export const UserBoard = ({user, onExit, handleScore }) => {
     };
 
     const handleWin = () => {
+      // const nextIndex = playerCollection.players.indexOf(user);
+      //   playerCollection.setCurrentIndex(nextIndex);
+      //   console.log(playerCollection.getCorrentIndex());
+      //   setWin(true);
+      //   user.scores.push(steps+1);
+
+        const nextIndex = (playerCollection.getCorrentIndex() + 1) % playerCollection.players.length;
+        playerCollection.setCurrentIndex(nextIndex);
+        console.log(playerCollection.getCorrentIndex());
         setWin(true);
-        user.scores.push(steps+1);
+        user.scores.push(steps + 1);
+        const nextPlayer = playerCollection.getNextPlayer();
+        playerCollection.setActive(nextPlayer);
+        
     };
 
     const handleNewGame = () => {
@@ -101,12 +113,17 @@ export const UserBoard = ({user, onExit, handleScore }) => {
         user.steps = 0;
         setWin(false);
         handleScore(user);
+        console.log(playerCollection.getCorrentIndex());
+
     };
 
     const handleExit1 = () => {
         playerCollection.removePlayer(user);
         onExit(user);
         handleScore(user);
+        console.log(playerCollection.getCorrentIndex());
+
+
     };
     
    

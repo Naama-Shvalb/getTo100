@@ -1,13 +1,16 @@
 .UserBoard{
     margin-left: 20px;
     margin-right: 20px;
+    margin-bottom: 50px;
     border: 1px solid #ccc;
     border-radius: 20px;
     padding: 5px;
     box-shadow: 10px 5px 5px #1a1a1a;
     background-color: hwb(60 95% 3%);
     color: #1a1a1aed;
+    height: 305px;
     width: 271px;
+    box-sizing: border-box;
 }
 
 button{
@@ -20,14 +23,16 @@ button{
 .activeUser{
     margin-left: 20px;
     margin-right: 20px;
+    margin-bottom: 50px;
     border: 1px solid #ccc;
     border-radius: 20px;
     padding: 5px;
     box-shadow: 10px 5px 5px green !important;
     background-color: hwb(60 95% 3%);
     color: #1a1a1aed;
-    width: 271px;
-
+    height: 305px;
+    width: 271px; 
+    box-sizing: border-box;
 
 
 }

@@ -3,6 +3,7 @@ import {User} from '../User';
 import{CurrentPlayer, playerCollection} from '../CurrentPlayer';
 import { Login } from './Login';
 import { GameBoard } from './GameBoard';
+import './SignUpLogin.css';
 
 export const SingUp = () => {
     const [username, setUsername] = useState('');
@@ -22,10 +23,36 @@ export const SingUp = () => {
         localStorage.setItem('storedUser', JSON.stringify(storedUser));
         alert('The user has successfully registered');
         setToLogin(true);
+        loginUser();
       };
+
+    const loginUser = () => {
+      const storedUser = JSON.parse(localStorage.getItem('storedUser')) || [];
+      const user = storedUser.find(Element=>(Element.email === email));
+      if(user){
+        if(playerCollection.getPlayer(email)){
+          alert("You are already in the game");
+        } else {
+          const myPlayer = new CurrentPlayer(user.name, user.email, user.maxScore);
+          playerCollection.addPlayer(myPlayer);
+          //alert("The player entered successfully, please enter another player or start the game");
+        }
+      } else {
+        alert('you are not an existing user please insert another user or sign up');
+      }
+      setEmail("");
+    };
 
     const handleLogin = () => {
       setToLogin(true);
+    };
+
+    const handStartGame = () => {
+      if(playerCollection.getAllPlayers().length < 2){
+        alert("There are not enough players for the game, please add more players");
+      } else {
+        setLoggedInUser(true);
+      }
     };
 
       return (
@@ -36,7 +63,8 @@ export const SingUp = () => {
           ) : ToLogin ? (
             <Login></Login>
           ) : (
-            <div>
+            <div className='signUpLogin-container'> 
+              <h1>welcome to get to 100</h1>
               <h2>Sign up</h2>
               <input
                 type="text"
@@ -50,9 +78,11 @@ export const SingUp = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
-              <button onClick={handleSignup}>Signup</button>
+              <button className='signUpBtn' onClick={handleSignup}>Signup</button>
+              <button className='loginBtn' onClick={handleLogin}>login</button>
               <br />
-              <button onClick={handleLogin}>login</button>
+              <button className='enterToGameBtn'onClick={handStartGame}>enter to game</button>
+
             </div>
           )}
         </div>
