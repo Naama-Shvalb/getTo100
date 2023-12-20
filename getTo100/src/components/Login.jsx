@@ -17,9 +17,8 @@ export const Login = () => {
       if(playerCollection.getPlayer(email)){
         alert("You are already in the game");
       } else {
-        const myPlayer = new CurrentPlayer(user.name, user.email, user.maxScore);
+        const myPlayer = new CurrentPlayer(user.name, user.email, user.scores);
         playerCollection.addPlayer(myPlayer);
-        //alert("The player entered successfully, please enter another player or start the game");
       }
     } else {
       alert('you are not an existing user please insert another user or sign up');
@@ -32,14 +31,7 @@ export const Login = () => {
   };
 
   const handStartGame = () => {
-    //const players = JSON.parse(localStorage.getItem('players')) || [];
-    if(playerCollection.getAllPlayers().length < 2){
-      alert("There are not enough players for the game, please add more players");
-    } else {
-      setLoggedInUser(true);
-    }
-    
-    
+    setLoggedInUser(true);
   };
 
   return (

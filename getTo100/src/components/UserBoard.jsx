@@ -114,7 +114,6 @@ export const UserBoard = ({user, onExit, handleScore }) => {
         setWin(false);
         handleScore(user);
         console.log(playerCollection.getCorrentIndex());
-
     };
 
     const handleExit1 = () => {

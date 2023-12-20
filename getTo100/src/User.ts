@@ -1,13 +1,13 @@
 export class User{
     name: string;
     email: string;
+    scores: [];
     averageScore: number;
-    numberGames: number;
-    constructor(name, email){
+    constructor(name, email, scores){
         this.name = name;
         this.email = email;
-        this.averageScore = 100000;
-        this.numberGames = 0;
+        this.scores = scores || [];
+        this.averageScore = 0;
     }
 }
 

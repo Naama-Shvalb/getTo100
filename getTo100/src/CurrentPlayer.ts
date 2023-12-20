@@ -4,10 +4,10 @@ export class CurrentPlayer{
     number: Number;
     steps: Number;
     scores: number[];
-    constructor(name, email){
+    constructor(name, email, scores){
         this.name = name;
         this.email = email;
-        this.scores = [];
+        this.scores = scores || [];
         this.number = Math.floor(Math.random() * 100);
         this.steps = 0;
     }
@@ -22,8 +22,8 @@ export class PlayerCollection {
 
     constructor() {
         this.players = []; 
-        this.activePlayer = new CurrentPlayer('Default', '');
-        this.prevActivePlayer = new CurrentPlayer('Default', '');
+        // this.activePlayer = new CurrentPlayer('Default', '');
+        // this.prevActivePlayer = new CurrentPlayer('Default', '');
         this.numberPlayers = 0;
         this.currentIndex = 0;
     }
