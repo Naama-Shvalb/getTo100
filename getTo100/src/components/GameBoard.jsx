@@ -1,7 +1,6 @@
 import React, { useState , useEffect} from 'react';
-import {User} from '../User'; 
-import{CurrentPlayer, playerCollection} from '../CurrentPlayer';
-import { UserBoard } from './UserBoard';
+import{playerCollection} from '../CurrentPlayer';
+import {UserBoard} from './UserBoard';
 import './GameBoard.css';
 
 
@@ -60,7 +59,7 @@ export const GameBoard = () =>{
             <div></div>
             <div className='UsersBoards'>
                 {playerCollection.players.map((player)=>(
-                    <UserBoard key = {player.email} user = {player} onExit={() => handleExit(player)} handleScore = {win}/>
+                    <UserBoard key = {player.email} user = {player} onExit={() => handleExit(player)} handleScore = {() => win(player)}/>
                 ))}
             </div>
         </div>

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import {User} from '../User';
 import{CurrentPlayer, playerCollection} from '../CurrentPlayer';
 import { SingUp } from './SignUp';
 import { GameBoard } from './GameBoard';

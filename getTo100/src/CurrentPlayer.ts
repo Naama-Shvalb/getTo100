@@ -55,25 +55,6 @@ export class PlayerCollection {
         return this.players;
     } 
 
-    removePlayerByEmail(email) {
-        const playerIndex = this.players.findIndex(player => player.email === email);
-        if (playerIndex !== -1) {
-          this.players.splice(playerIndex, 1);
-        }
-      }
-
-    getPlayer(email){
-        return this.players.find(player=>(player.email === email));
-    }
-
-    getAllPlayers(): CurrentPlayer[]{
-        const tempPlayers: CurrentPlayer[] = [];
-        this.players.map((player, index)=>{
-            tempPlayers.push(player);
-        })
-        return tempPlayers;
-    }
-
     getNextPlayer(): CurrentPlayer {
         this.currentIndex = (this.currentIndex + 1) % this.players.length;
         return this.players[this.currentIndex];
