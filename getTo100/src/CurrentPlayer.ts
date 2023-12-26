@@ -26,6 +26,10 @@ export class PlayerCollection {
         this.currentIndex = 0;
     }
 
+    getPlayer(email){
+        return this.players.find(player=>(player.email === email));
+    }
+
     getActive(): CurrentPlayer {
         return this.activePlayer;
     }
